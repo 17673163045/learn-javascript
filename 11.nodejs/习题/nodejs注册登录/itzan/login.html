@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <script>
+        $.ajax({
+            url: "http://127.0.0.1:8080/login",
+            data: {
+                uname: "abc123",
+                upwd: 123
+            },
+            type: 'post',
+            dataType: "json"
+        }).then(function (res) {
+            console.log(res)
+        })
+    </script>
+</body>
+
+</html>
