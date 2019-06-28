@@ -1,1 +1,0 @@
-[{"uname":"abc123","upwd":"123","name":"刘德华"},{"uname":"itzan","upwd":"123","name":"美男子"},{"uname":"useker","upwd":"123","name":"高富帅"},{"uname":"aaa","upwd":"321","name":"蔡依林"},{"uname":"aaa1","upwd":"321","name":"蔡依林"},{"uname":"aaa2","upwd":"321","name":"蔡依林"}]
