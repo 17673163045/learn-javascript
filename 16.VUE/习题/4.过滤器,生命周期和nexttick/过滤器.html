@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <script src="../js/VUE.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in list">
+                {{item.name | filter1 | filter2}}
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
+<script>
+    //定义过滤器
+    Vue.filter("filter1",function(val){
+        if(val.length >3){
+            return val.slice(0,3) + "..."
+        }else{
+            return val
+        }
+    })
+    new Vue({
+        el: "#app",
+        data: {
+            list: [{
+                name: "喜羊羊很聪明"
+            }, {
+                name: "灰太狼很抗饿"
+            }, {
+                name: "小灰灰很可爱"
+            }]
+        },
+        methods: {
+        }
+    })
+</script>

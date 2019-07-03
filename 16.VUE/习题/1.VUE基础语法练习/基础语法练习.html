@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <script src="../js/VUE.min.js"></script>
+    <style>
+        pre {
+            color: rgb(241, 164, 70);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <pre>
+              new Vue({
+                  el: "#app",
+                  data: {
+                      parent: "父级",
+                      child: "子级"
+                  },
+                  methods: {
+                      test1(parent) {
+                          alert(parent)
+                      },
+                      test2(child, e) {
+                          alert(child);
+                      },
+                  }
+              })
+            </pre> -->
+    <!-- 
+    使用new Vue实例
+        <div id="app">
+        {{msg}}
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                msg:"hello world"
+            }
+        })
+    </script> -->
+
+    <!-- 
+    模板使用表达式
+        <div id="app">
+        {{msg}}
+        {{msg + "啦啦啦"}}
+        {{ 10 + 20 }}
+        {{msg.indexOf("w")}}
+        {{booeal?msg:"你好"}}
+        {{[1,2,3,4].splice(1,1)}}
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                msg: "hello world",
+                booeal: true
+            }
+        })
+    </script> -->
+
+    <!-- 内置指令 -->
+    <!-- <div id="app">
+        <span v-html="temp"></span>
+        <span v-html="text"></span>
+        <span v-if=0>哈哈哈</span>
+        <div v-if = "0" style="height:100px;width:100px;background:red;"></div>
+    <div v-if="text == '下雨'">带伞</div>
+    <div v-if="text !='下雨'">不带伞</div>
+    <div v-else>不带伞</div>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                msg: "hello world",
+                temp: "<h1>哈哈</h1>",
+                text: "不下雨"
+            }
+        })
+    </script> -->
+
+    <!-- 属性绑定 -->
+    <!-- <div id="app">
+        <a v-bind:href="url" :title="txt">
+            <div :style="setStyle">百度</div>
+        </a>
+       
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                url:"http://www.baidu.com",
+                txt:"跳转百度",
+                setStyle:"height:100px;width:100px;background:red"
+            }
+        })
+    </script> -->
+
+    <!-- 事件绑定 -->
+    <!-- <div id="app">
+        <button :data-my=dataMy :disabled="bool">点击</button>
+        <button v-on:click="event2(num1,num2,$event)">点击打印事件对象e</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                url: "http://www.baidu.com",
+                bool: true,
+                dataMy: "index",
+                num1:10,
+                num2:20
+            },
+            methods: {
+                event2(a,b,e){ //这个函数要返回a+b的值和事件对象
+                console.log(e); // 打印事件对象
+                console.log(a + b); // 打印a + b ,传参在元素的行内函数里的小括号传入,事件对象的参数必须是$event
+                }
+            }
+        })
+    </script> -->
+
+    <!-- 阻止事件冒泡 -->
+    <!-- <div id="app">
+        <form action="">
+            <button type="submit" @click.prevent>提交</button>
+        </form>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                parent:"父级",
+                child:"子级"
+            },
+            methods:{
+                test1(parent){
+                    alert(parent)
+                },
+                test2(child,e){
+                    alert(child);
+                },
+            }
+        })
+    </script> -->
+
+    <!-- 阻止键盘事件 -->
+    <!-- <div id="app">
+        <input type="text" v-on:keydown.enter=keyTest>
+    </div>
+    <script>
+        Vue.config.keyCodes.q = 81;
+        new Vue({
+            el: "#app",
+            data: {
+
+            },
+            methods: {
+                keyTest(e) {
+                    alert(e.keyCode)
+                },
+                test2() {
+
+                }
+            }
+        })
+    </script> -->
+
+    <!-- v-for循环 -->
+    <!-- <div id="app">
+        <ul>
+            <li v-for="item in list">
+                <ul>
+                    <li v-for="el in item.arr">
+                        {{el}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                list: [{
+                    name: "喜羊羊",
+                    arr: [1, 2, 3, 4, 5]
+                }, {
+                    name: "小灰灰",
+                    arr: [1, 2, 3, 4, 5]
+                }, {
+                    name: "慢羊羊",
+                    arr: [1, 2, 3, 4, 5]
+                }]
+            },
+            methods:{
+                test(index){
+                    alert(this.list[index].name)
+                }
+            }
+        })
+    </script> -->
+
+    <!-- 动态class样式 -->
+
+
+    <div id="app">
+        <h1>{{name}}</h1>
+        数量:<input type="number" v-model="num">
+        价格:{{num*price}}
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                name: "苹果",
+                price: 6,
+                num: 11,
+                testStr: ""
+            }
+        })
+    </script>
+</body>
+
+</html>

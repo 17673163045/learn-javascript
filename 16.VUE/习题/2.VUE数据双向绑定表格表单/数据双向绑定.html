@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据双向绑定</title>
+    <script src="../js/VUE.min.js"></script>
+</head>
+
+<body>
+    <!-- 简单的绑定表单输入 -->
+    <!-- <div id="app">
+        <input type="number" v-model="put">{{put}}
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                put:"0"
+            },
+            methods:{
+
+            }
+        })
+    </script> -->
+    <!-- 数据实时输出 -->
+    <!-- <div id="app">
+        <ul>
+            <li v-for="item in goods">
+                名称:{{item.name}}
+                数量:{{item.num}}
+                单价:{{item.price}}
+                <input type="number" v-model="item.num" @click="add(item)">
+                小计:{{item.num * item.price}}
+            </li>
+            <p v-model="total">{{total}}</p>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                goods: [{
+                    name: "苹果",
+                    price: 10,
+                    num: 0,
+                    singleprice: 0
+                }, {
+                    name: "香蕉",
+                    price: 8,
+                    num: 0,
+                    singleprice: 0
+                }, {
+                    name: "梨子",
+                    price: 6,
+                    num: 0,
+                    singleprice: 0
+                }],
+                total: 0
+            },
+            methods: {
+                
+            }
+        })
+    </script> -->
+
+    
+</body>
+
+</html>
