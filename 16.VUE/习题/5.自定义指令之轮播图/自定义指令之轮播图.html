@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <script src="../js/VUE.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="item in imgList">
+                    <img :src="item" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    //自定义组件:
+    
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            imgList: []
+        },
+        mounted() {
+            setTimeout(function () {
+                vm.imgList = ["./img/4.jpg", "./img/4.jpg", "./img/4.jpg"];
+                vm.$nextTick(function () {
+                    vm.swiperInit();
+                })
+            }, 1000)
+
+        },
+        methods: {
+            swiperInit: function () {
+                return new Swiper('.swiper-container', {
+                    autoplay: 2000, //可选选项，自动滑动
+                })
+            }
+        }
+    })
+</script>

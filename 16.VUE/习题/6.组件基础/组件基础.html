@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <script src="js/swiper.min.js"></script>
+    <script src="../js/VUE.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{post}}
+        <child @msg="test"></child>
+    </div>
+</body>
+
+</html>
+<script>
+    // 自定义全局组件
+    Vue.component("child", {
+        template: `<div><span></span></div>`,
+        mounted() {
+            this.$emit("msg","我要传给父组件")
+        }
+    })
+    new Vue({
+        el: "#app",
+        data: {
+            post:""
+        },
+        methods:{
+            test:function(arg){
+                this.post =arg
+            }
+        }
+    })
+</script>
