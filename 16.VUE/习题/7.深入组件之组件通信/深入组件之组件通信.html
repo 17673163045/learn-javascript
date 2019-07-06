@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <script src="js/swiper.min.js"></script>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="run">dianji</button>
+    </div>
+</body>
+
+</html>
+<script>
+    var vm = new Vue();
+    new Vue({
+        el: "#app",
+        data: {
+            msg: ""
+        },
+        mounted() {
+
+        },
+        methods: {
+            run() {
+                vm.$emit("say", "haha");
+                vm.$on("say", (res) => {
+                    this.msg = res;
+                    alert(this.msg)
+                })
+            }
+        }
+    })
+</script>

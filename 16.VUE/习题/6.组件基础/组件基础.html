@@ -13,29 +13,35 @@
 
 <body>
     <div id="app">
-        {{post}}
-        <child @msg="test"></child>
+        <input type="text" v-model=name>  {{val}}
     </div>
 </body>
 
 </html>
 <script>
     // 自定义全局组件
-    Vue.component("child", {
-        template: `<div><span></span></div>`,
-        mounted() {
-            this.$emit("msg","我要传给父组件")
-        }
-    })
     new Vue({
-        el: "#app",
+        el: '#app',
         data: {
-            post:""
+            val:"",
+            name: "",
+            price: 10,
+            num: 6
         },
-        methods:{
-            test:function(arg){
-                this.post =arg
+        mounted() {
+        },
+        methods: {
+            count() {
+                console.log("重新计算了一遍");
+                return this.price * this.num
             }
-        }
+        },
+        watch: {
+            name:{
+                handler(newval,oldval){
+                    this.val = newval + "" + oldval
+                }
+            }
+        },
     })
 </script>
