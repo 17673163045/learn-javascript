@@ -1,0 +1,12 @@
+{
+  "name": "mybodyCS1902",
+  "version": "1.0.1",
+  "description": "CS1902 1902 H51902",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["CS1902","1902","H51902"],
+  "author": "useker",
+  "license": "ISC"
+}

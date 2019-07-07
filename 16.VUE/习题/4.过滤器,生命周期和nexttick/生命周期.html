@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <script src="../js/VUE.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div ref="node">{{msg}}</div>
+        <button @click="test">test</button>
+    </div>
+</body>
+
+</html>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            msg: "hello"
+        },
+        beforeUpdate() {
+            console.log("正在更新数据");
+            console.log(this.msg);
+        },
+        updated() {
+            console.log("更新数据完成");
+            console.log(this.msg);
+        },
+        methods: {
+            test() {
+                this.msg = "haha";
+            }
+        }
+    })
+</script>

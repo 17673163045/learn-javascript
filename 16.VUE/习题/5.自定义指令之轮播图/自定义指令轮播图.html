@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <script src="js/swiper.min.js"></script>
+
+    <script src="../js/VUE.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-if="bool" v-test="{list,flag,sss}">1</div>
+    </div>
+</body>
+
+</html>
+<!-- <script>
+    //自定义组件:
+    // Vue.directive = ("指令名称",fn(el,binding,vnode))
+    //el,使用指令的当前dom元素,binding.value,参数,vnode.context:当前的vue实例
+
+    Vue.directive("swiper", function (el, binding, vnode) {
+        // console.log(binding.value); //打印两次,一次空,一次改变的数据.
+        //为了解决异步的问题,小技巧:异步加载开关,
+        // 异步加载开关:
+        // 1.在data里挂载数据flag:false,等数据获取完毕,修改为true,只有为true时,
+        // 2.在el元素上写v-if="flag"
+        // 3. 只有等数据加载完毕,v-if=true才会解析el,才会解析指令.
+        var imgList = binding.value;
+        var str = "";
+        imgList.forEach((item) => {
+            str += `<div class="swiper-slide"><img src=${item}></div>`;
+
+        })
+        swiperNodes = `<div class="swiper-container">
+            <div class="swiper-wrapper">
+                ${str}
+            </div>
+        </div>`;
+        el.innerHTML = swiperNodes;
+        Vue.nextTick(()=> {
+            console.log(this)
+            vnode.context.swiperInit()
+        })
+    })
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            imgList: [],
+            flag: false
+        },
+        mounted() {
+            setTimeout(function () {
+                vm.imgList = ["./img/4.jpg", "./img/5.jpg", "./img/6.jpg"];
+                vm.$nextTick(function () {
+                    vm.flag = true;
+                    vm.swiperInit();
+                })
+            }, 1000)
+
+        },
+        methods: {
+            swiperInit: function () {
+                return new Swiper('.swiper-container', {
+                    autoplay: 2000, //可选选项，自动滑动
+                })
+            }
+        }
+    })
+</script> -->
+<script>
+    // Vue.directive("test", {
+    //     bind: function (el, bingding, vnode) {
+    //         console.log(el);
+    //         console.log(bingding.value)
+    //         console.log(vnode.context.list)
+    //     },
+    //     inserted: function (el, bingding, vnode) {
+    //        console.log(el);
+    //         console.log(bingding.value)
+    //         console.log(vnode.context.list)
+    //     },
+    //     update: function (el, bingding, vnode) {
+    //         // console.log(111);
+    //         console.log(bingding.value)
+    //         console.log(vnode.context.list)
+    //     }
+    // })
+    Vue.directive("test", {
+        bind: function (el, binding, vnode) {
+            // console.log(el)
+            // console.log(binding.value); // 打印空数组
+            // console.log(vnode.context.list); //打印空数组
+        },
+        inserted: function (el, binding, vnode) {
+            console.log(binding.value); //打印空数组
+            console.log(vnode.context.list); // 打印空数组
+        },
+        update: function (el, binding, vnode) {
+            // console.log(binding.value); // 打印[1,2,3]
+            // console.log(vnode.context.list); //打印[1,2,3]
+        }
+    })
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            list: [],
+            flag: true,
+            sss: "aaa",
+            bool: false
+        },
+        beforeCreate() {
+            // this.bool = true;
+        },
+        created() {
+
+        },
+        beforeMount() {
+            // this.bool = true;
+        },
+        mounted() {
+            this.list = [1, 2, 3];
+            this.bool = true;
+        }
+    })
+</script>

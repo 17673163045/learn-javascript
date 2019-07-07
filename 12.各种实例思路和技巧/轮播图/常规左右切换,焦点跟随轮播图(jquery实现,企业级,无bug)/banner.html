@@ -2,55 +2,59 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>左右切换,焦点跟随轮播图</title>
-    <link rel="stylesheet" href="./banner.css">
-    <script src="./jquery.js"></script>
-    <script src="./banner.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>左右切换,焦点跟随轮播图</title>
+        <link rel="stylesheet" href="./banner.css">
+        <script src="./jquery.js"></script>
+
 </head>
 
 <body>
-    <div class="banner">
-        <ul class="bannerhide">
-            <li><img title="0"
-                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561374351131&di=d8a9ff6021a4dbfa3d0ca86e96f333f2&imgtype=0&src=http%3A%2F%2Fpic5.bbzhi.com%2Fqitabizhi%2Fbaohuyanjingdebizhiji%2Fbaohuyanjingdebizhiji_475383_8.jpg">
-            </li>
-            <li><img
-                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561374351131&di=9b1eeade1499f05ca2a321241239884f&imgtype=0&src=http%3A%2F%2Fimg2.ph.126.net%2FWUTHvLaj2_uj2FHnseHzRg%3D%3D%2F3370662846210148217.jpg">
-            </li>
-            <li><img
-                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561374351130&di=ff1962b5a4bed546c3982a09b282724a&imgtype=0&src=http%3A%2F%2Fimg1.ph.126.net%2F-VVULWjD0oilKlW-3U7o3g%3D%3D%2F1704049509106372555.jpg">
-            </li>
-            <li><img
-                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561374351130&di=6c01966c6cdc81aa2be78131de9bde35&imgtype=0&src=http%3A%2F%2Fcn.naturewallpaperfree.com%2Ftiankong-hai%2527an%2Fziran-bizhi-1024x600-3449-829f4e4b.jpg">
-            </li>
-            <li><img
-                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561374351130&di=d6ef794126527fe74df7012f33208510&imgtype=0&src=http%3A%2F%2Fimg1.ph.126.net%2FAEpq-q8cWqtC9LMEuYRNqA%3D%3D%2F3911657751448025548.jpg">
-            </li>
-            <li><img
-                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561374351118&di=e95289b002a6691527ea397697b7231a&imgtype=0&src=http%3A%2F%2Fimg0.ph.126.net%2FCictEbAXP72_hchmSSAkVQ%3D%3D%2F3342796823515792563.jpg">
-            </li>
+        <div class="banner">
+                <ul class="bannerhide">
+                        <li><img title="0"
+                                        src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561374351131&di=d8a9ff6021a4dbfa3d0ca86e96f333f2&imgtype=0&src=http%3A%2F%2Fpic5.bbzhi.com%2Fqitabizhi%2Fbaohuyanjingdebizhiji%2Fbaohuyanjingdebizhiji_475383_8.jpg">
+                        </li>
+                        <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561374351131&di=9b1eeade1499f05ca2a321241239884f&imgtype=0&src=http%3A%2F%2Fimg2.ph.126.net%2FWUTHvLaj2_uj2FHnseHzRg%3D%3D%2F3370662846210148217.jpg">
+                        </li>
+                        <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561374351130&di=ff1962b5a4bed546c3982a09b282724a&imgtype=0&src=http%3A%2F%2Fimg1.ph.126.net%2F-VVULWjD0oilKlW-3U7o3g%3D%3D%2F1704049509106372555.jpg">
+                        </li>
+                        <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561374351130&di=6c01966c6cdc81aa2be78131de9bde35&imgtype=0&src=http%3A%2F%2Fcn.naturewallpaperfree.com%2Ftiankong-hai%2527an%2Fziran-bizhi-1024x600-3449-829f4e4b.jpg">
+                        </li>
+                        <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561374351130&di=d6ef794126527fe74df7012f33208510&imgtype=0&src=http%3A%2F%2Fimg1.ph.126.net%2FAEpq-q8cWqtC9LMEuYRNqA%3D%3D%2F3911657751448025548.jpg">
+                        </li>
+                        <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561374351118&di=e95289b002a6691527ea397697b7231a&imgtype=0&src=http%3A%2F%2Fimg0.ph.126.net%2FCictEbAXP72_hchmSSAkVQ%3D%3D%2F3342796823515792563.jpg">
+                        </li>
 
-            <li><img title = "6"
-                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561374351131&di=d8a9ff6021a4dbfa3d0ca86e96f333f2&imgtype=0&src=http%3A%2F%2Fpic5.bbzhi.com%2Fqitabizhi%2Fbaohuyanjingdebizhiji%2Fbaohuyanjingdebizhiji_475383_8.jpg">
-            </li>
-        </ul>
-        <div class="arrow">
-            <span class="left">&lt;</span>
-            <span class="right">&gt;</span>
+                        <li><img title="6"
+                                        src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561374351131&di=d8a9ff6021a4dbfa3d0ca86e96f333f2&imgtype=0&src=http%3A%2F%2Fpic5.bbzhi.com%2Fqitabizhi%2Fbaohuyanjingdebizhiji%2Fbaohuyanjingdebizhiji_475383_8.jpg">
+                        </li>
+                </ul>
+                <div class="arrow">
+                        <span class="left">&lt;</span>
+                        <span class="right">&gt;</span>
+                </div>
+
+                <ol class="circle">
+                        <li class="now"></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                </ol>
         </div>
-
-        <ol class ="circle">
-            <li class="now"></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ol>
-    </div>
 </body>
 
 </html>
+<script src="./banner2.js"></script>
+<script>
+        同步和异步
+        for (var i = 0; i < 3; i++) {
+                setTimeout(function () {
+                        console.log(i)
+                }, 1000)
+        }
+</script>
