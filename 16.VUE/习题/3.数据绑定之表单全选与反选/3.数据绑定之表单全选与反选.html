@@ -11,6 +11,9 @@
 
 <body>
     <div id="app">
+            <div v-for="item in arr">
+                {{item}}<input type="checkbox" :value=item>
+            </div>
              <select v-model="selected" multiple style="width: 50px;">
                  <option>A</option>
                  <option>B</option>
@@ -25,7 +28,8 @@
     var vm = new Vue({
         el: "#app",
         data: {
-          selected:""
+          selected:"",
+          arr:[1,2,3,4,5]
         }
     })
 </script>

@@ -1,0 +1,227 @@
+### 初识webpack
+
+```js
+1.全局安装webpack
+	`cnpm i webpack@3.6.0 -g`
+2.使用 webpack -v指令获取版本号,获取成功则安装成功.
+```
+
+```js
+1.新建项目文件夹名称,比如vue-webpack-demo
+2.在项目文件夹里新建`main.js`文件;`main.js`文件是作为webpack打包的入口文件.
+3.新建index.html文件.
+```
+
+```js
+在main.js写逻辑:
+	`document.querySelector("#box").innerHTML = "hello world"`
+```
+
+```html
+在index.html文件写:
+<div id=box>hello world</div>
+<script src="./bundel"></script>
+注意:这里引入的是bundle.js文件而不是main.js
+```
+
+```js
+打包指令:
+	`webpack main.js bundle.js`
+打包完毕,我们会发现文件夹多了一个bundle.js文件.
+```
+
+```js
+打开html页面,我们发现页面输出了`hello world`.
+我们通过打包,将我们的`所有js`文件都打包到`bundle.js`,然后我们在html文件引js文件时,只需要引入`bundle.js`这一个js文件即可.
+```
+
+```js
+由于刚下载的webpack`只支持js文件打包`,所以我们需要配置loader来让webpack支持更多的打包css,sass,vue后缀的文件,图片等等.
+```
+
+### 配置webpack.config.js
+
+```js
+我们上面通过webpack main.js bundle.js来将我们的main.js打包到bundle.js,我们只需要在html里引入bundle.js即相当于引入了main.js.
+但是,当我们有大量的js文件需要引入,我们不肯可能这样webpack xx1.js xx2.js xx3.js... bundle.js来打包我们的js文件.所以:
+	配置webpack.config.js来配置自动打包我们想要打包的文件.
+```
+
+```js
+在项目文件夹下`新建webpack.config.js`;
+编辑webpack.config.js:         //新建配置文件
+	module.exports = {
+        entry:"./main.js",       // 入口entry文件
+        output:{                 // 出口文件
+            path:__dirname + "/bundle",    //出口路径
+            filename:"bundle.js"           // 出口的文件
+        }
+    }
+
+//配置好之后,我们只需要运行`webpack`指令即可执行打包.
+//html文件引入bundle.js的路径需要改动.
+```
+
+### 模块化
+
+```js
+`webpack支持模块化`:
+支持commonJS规范:
+	导入模块:`require` var xxx = require("xxx");
+	导出(暴露)模块:`module.exports = {}`
+    引入第三方模块(js文件):第三方模块不在node_module里面,内置模块在node_module里面,它们引入的方式不一样,第三方直接按照路径引入js文件即可.
+支持ES6语法:
+	导入模块:import xxx from xxx;
+	导出模块:export default 或者 export
+```
+
+```js
+这个时候,我们有其他需要的js文件需要打包,只需要在main.js里面把需要的js文件当作模块引入,注意,如果js文件要当作模块被别的js文件引入,需要在js后面写module.exports={}或者export default来暴露(导出)本身.
+```
+
+```js
+我们另外写一个`demo.js`:
+	var str = "我是一个模块";
+	module.exports=str; //将demo.js暴露.
+```
+
+```js
+在main.js引入demo.js:
+	var str = require("./demo.js");
+	document.querySelector("#box").innerText = str;
+引入完毕,我们再次执行打包:`webpack`指令,即可打包到bundle.js.
+打开浏览器,看到页面被渲染为"我是一个模块".
+```
+
+配置loader
+
+```js
+由于webpack只支持js文件打包,所以我们需要安装对应的loader来打包css,sass,图片等文件.
+```
+
+```js
+下载loader支持打包`css`和`style`样式:
+`cnpm install css-loader@0.28.4 style-loader@0.23.1 -D`
+下载完毕后会有一个node_module的文件夹,记住node_moudle就是放内置模块的文件夹.
+```
+
+```js
+下载loader支持`scss`文件编译
+`cnpm install node-sass@4.12.0 sass-loader@7.1.0 -D`
+```
+
+```js
+下载babel`转ES5`语法:
+`cnpm i babel-core@6.26.3 babel-loader@7.1.5 babel-preset-es2015@6.24.1 babel-plugin-transform-object-rest-spread@6.23.0 -D`
+Babel是一个广泛使用的转码器，可以将ES6代码转为ES5代码，从而在现有环境执行。
+这意味着，你可以现在就用ES6编写程序，而不用担心现有环境是否支持
+```
+
+```js
+下载vue的loader支持支持Vue后缀的文件,支持template模版,支持vue的style样式
+`cnpm i vue-loader@12.2.2  vue-style-loader@4.1.2  vue-template-compiler@2.6.10 vue@2.6.10  vue-router@3.0.6  -D`
+```
+
+```js
+下载完loader要添加对应的webpack配置:
+	module.exports={
+    //入口文件
+    entry:"./main.js",
+    // 出口文件
+    output:{
+        path:__dirname+"/bundle",
+        filename:"bundle.js"
+    },
+    //配置我们的loader
+    module:{
+        rules:[
+            {
+                // css和style的loader
+                test:/\.css$/,
+                use:[
+                     {loader:"style-loader"},
+                     {loader:"css-loader"}  
+        
+                ]
+            },
+            {
+			//scss的loader
+                test: /\.scss$/,
+                use:[
+                     {loader:"style-loader"},
+                     {loader:"css-loader"},
+                     {loader: "sass-loader"}  
+        
+                ]
+        
+            },
+            //转ES5的loader
+            { test: /\.js$/, loader: "babel-loader" },
+            //支持vue后缀文件的loader
+            {
+                test: /\.vue$/,
+
+                use: [{
+                    loader: 'vue-loader',
+                    options: {
+                        loaders: {
+                            js: 'babel-loader?{"presets":["es2015"],"plugins": ["transform-object-rest-spread"]}',
+                            css: 'vue-style-loader!css-loader'
+                        }
+                    }
+                }],
+            }
+        ]
+    }
+}
+```
+
+```js
+我们每下一个模块,都会保存到node_module里面,而对应的package.json里面就会有对应的配置信息,并且保存着版本信息.
+如果我们的项目有问题,我们可以删除node_module,利用`cnpm install`指令,它会自动去找package.json里的模块信息,重新下载package.json里面的所有模块.
+```
+
+```js
+我们提交项目的时候,要用.ignore来`过滤`掉`node_module`等文件.
+```
+
+### 脚手架快速搭建
+
+#### node安装
+
+```js
+1.node安装,版本4.0及以上
+2.使用node -v查看node版本看是否安装成功.
+```
+
+#### 全局安装vue-cli
+
+```js
+1. `npm install -g vue-cli`安装到全局
+2.使用vue -v 查看vue版本.
+```
+
+#### 项目初始化
+
+```js
+ `vue init webpack demo(你新建的项目名称/文件名称)`
+ 执行之后将会 自动初始化一个文件夹 ：demo
+```
+
+#### 下载配置node_module
+
+```js
+手动打开demo文件夹 可以看到已经初始化好了一个基本的项目.
+这个时候package.json已经配置好了相关的模块信息,你需要安装这些模块,使用`cnpm install`指令
+```
+
+#### 运行项目
+
+```js
+使用指令` npm run dev `或者`yarn start `来运行项目.
+默认端口是localhost:8080,
+   通过查看配置文件package.json的script属性,可以查看到启动命令.
+```
+
+
+

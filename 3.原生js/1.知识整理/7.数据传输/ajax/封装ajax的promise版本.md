@@ -1,9 +1,3 @@
-
-
-
-
-
-
 封装Ajax的 promise版本
 
 知识点:
@@ -22,9 +16,9 @@ get请求数据是url请求,格式是一长串url + "?" + xxx=xxx&xxx=xxx,所以
 
 2,将应答文本即传输的数据当做resolve()的参数,在promise对象里进行then()调用.
 
-3.Ajax函数的参数是一个对象opts,包括opts = {data:"请求的数据",datatype:"请求的数据类型",url:"请求数据的地址",type:"请求方式,get/post",async:true / false,对应异步或同步,success:成功返回数据结果后的回调函数,如果用promise对象的话,就不需要}
+3.Ajax函数的参数是一个对象opts,包括opts = {data:"请求的数据",datatype:"请求的数据类型",url:"请求数据的地址",type:"请求方式,get/post",async:true / false,对应异步或同步,success:成功返回数据结果后的回调函数,如果用promise对象的话,就不需要success.
 
-4.在ajax函数里面,所以要进行
+4.
 
 实现:
 
