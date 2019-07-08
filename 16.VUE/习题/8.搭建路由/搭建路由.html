@@ -12,42 +12,64 @@
 
 <body>
     <div id="app">
-        <lay_head></lay_head>
+        <!-- 使用组件 -->
+        <lay_header></lay_header>
         <router-view></router-view>
-        <lay_foot></lay_foot>
+        <lay_footer></lay_footer>
     </div>
 </body>
 
 </html>
 <script>
-    const lay_head = {
-        template: `<div>我是头部<router-link to="/news">Go to news</router-link>
-        </div>`
+    //1.定义组件
+    const lay_header = {
+        template: `<div>我是头部
+    <router-link to="/news">去新闻页</router-link>
+    <router-link to="/msg">去信息页</router-link>
+    </div>`
     };
-    const lay_msg = {
-        template: `<div><h1>我是信息页</h1></div>`
-    }
-    const lay_news = {
-        template: `<div><h2>我是新闻页</h2></div>`
-    }
-    const lay_foot = {
+    const lay_footer = {
         template: `<div>我是尾部</div>`
     };
+    const lay_news = {
+        template: `<div>我是新闻页</div>`
+    };
+    const lay_body = {
+        template: `<div>我是主体页</div>`
+    }
+    const lay_msg = {
+        template: `<div>我是信息页</div>`
+    }
+    //2.配置路由映射组件
     const router = new VueRouter({
         routes: [{
-            path: "/",
-            component: lay_msg
-        }, {
-            path: "/news",
-            component: lay_news
-        }]
+                path: "/",
+                component: lay_body
+            },
+            {
+                path: "/news",
+                component: lay_news
+            }, {
+                path: "/msg",
+                component: lay_msg
+            }
+        ]
     })
-    new Vue({
+    const vm = new Vue({
         el: "#app",
         router,
+        data: {
+
+        },
+        methods: {
+
+        },
         components: {
-            lay_head,
-            lay_foot
+            lay_body,
+            lay_header,
+            lay_footer,
+            lay_news,
+            lay_msg
         }
     })
 </script>
