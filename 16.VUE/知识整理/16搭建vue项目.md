@@ -197,7 +197,7 @@ Babel是一个广泛使用的转码器，可以将ES6代码转为ES5代码，从
 #### 全局安装vue-cli
 
 ```js
-1. `npm install -g vue-cli`安装到全局
+1. `cnpm install -g vue-cli`安装到全局
 2.使用vue -v 查看vue版本.
 ```
 
