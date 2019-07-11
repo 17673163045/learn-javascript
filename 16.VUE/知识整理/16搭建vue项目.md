@@ -185,7 +185,7 @@ Babel是一个广泛使用的转码器，可以将ES6代码转为ES5代码，从
 我们提交项目的时候,要用.ignore来`过滤`掉`node_module`等文件.
 ```
 
-### 脚手架快速搭建
+## 脚手架快速搭建
 
 #### node安装
 
@@ -223,5 +223,83 @@ Babel是一个广泛使用的转码器，可以将ES6代码转为ES5代码，从
    通过查看配置文件package.json的script属性,可以查看到启动命令.
 ```
 
+### 设置别名
 
+```js
+build文件夹--> webpack.base.config-->:
+    resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+          'vue$': 'vue/dist/vue.esm.js',
+          '@': resolve('src'),
+        }
+      }
+可以为@符号设置别名,默认@设置为src文件夹目录.`@/components`即表示src文件夹下的components文件夹.
+```
+
+### 设置任意形式的访问
+
+```js
+config文件夹--->index.js-->:
+	host: 'localhost', 
+    port: 8080, 
+    更改为:
+    host: '0.0.0.0', // 
+    port: 9999, //随意
+```
+
+### src文件
+
+```js
+scr文件是我们主要编辑目录,除了在src里面修改不需要重启,其他目录都要重启服务器.
+scr文件夹下的assets,主要存放下载到本地的图片资源,如ico图片,精灵图,不需要去服务器拉取图片资源.
+src文件夹下的components,主要存放组件库.
+```
+
+### static文件
+
+```js
+一级目录下的static文件,和src平级.
+里面适合存放面放一些第三方(前端插件)的文件,比如类似jquery等不需要编译的文件.
+static/ 目录下的文件并不会被 Webpack 处理,所以适合放不需要编译的文件,如果是sass文件,不能放在static文件夹下.
+`必须使用绝对路径引用这些文件`
+```
+
+```js
+不需要编译的静态文件,直接在`index.html`引用,比如: `<link rel="stylesheet" href="./static/reset.css">`或者引入jquery,`<script src="./static/jquery.js"></script>`
+```
+
+### package.json文件
+
+```js
+这里存放的是模块清单,对应有启动项目的各个模块版本,可以维持项目的稳定性.
+```
+
+### 导入scss文件编译
+
+```js
+下载sass模块:cnpm install node-sass sass-loader sass-resources-loader --save-dev
+```
+
+```js
+在src文件夹下建立common文件夹下再建立css文件夹,里面存放scss文件.
+```
+
+```js
+build文件夹下的utils文件中配置
+	scss: generateLoaders('sass').concat(
+     {
+       loader: 'sass-resources-loader',
+       options: {
+         resources: path.resolve(__dirname, '../src/common/css/index.scss')
+       }
+     }
+   )
+```
+
+### 配置axios
+
+```js
+下载axios模块:
+```
 
